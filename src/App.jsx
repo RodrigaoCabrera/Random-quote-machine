@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import uniqid from 'uniqid';
 
 function App() {
@@ -124,8 +124,14 @@ const [modoEdit, setModoEdit] = useState(false)
     setAdd(!add)
     console.log(newArray)
   }
-  console.log(lista)
 
+//UseEffet y setTimeout para que cuando cargue se ejecute handleNext y muestre un frase.
+  useEffect(() => {
+    setTimeout(() => {
+      handleNext()
+    }, 2000)
+    
+  }, [])
 
   return (
     <div 
@@ -134,8 +140,8 @@ const [modoEdit, setModoEdit] = useState(false)
     style={{backgroundColor:color}} 
     >
 
-      <div className="bg-success mx-auto rounded border-white" style={{width:"80%"}}>
-        <section className="bg-dark text-white rounded my-3 mx-3">
+      <div className=" bg-dark mx-auto rounded border-white" style={{width:"80%"}}>
+        <section className="text-white rounded my-3 mx-3">
         {/*Estados usados para mostrar la frase y autor*/}
           <p className="text-center font-italic font-weight-bold">{frase}</p>
           <p className="text-right">{autor}</p>
@@ -145,7 +151,7 @@ const [modoEdit, setModoEdit] = useState(false)
       <div className="bg-dark mx-auto d-flex rounded" style={{width:"80%"}}>
         <button className="btn btn-success ml-auto" onClick={handleEdit}>Editar frase</button>
         <button className="btn btn-secondary mx-3" onClick={handleAdd}>Añadir frase</button>
-        <button className="btn btn-primary" onClick={handleNext}>Siguiente</button>
+        <button className="btn btn-primary mr-3" onClick={handleNext}>Siguiente</button>
       </div>
       
       {/*Operación ternaria que habilita y deshabilita el formulario para agregar frases.*/}
