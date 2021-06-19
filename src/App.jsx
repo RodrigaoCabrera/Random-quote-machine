@@ -44,7 +44,7 @@ function App() {
       id: uniqid()
     },
     {
-      frase: 'A la grande le pus cuca',
+      frase: 'A la grande le puse cuca',
       autor: 'Homero',
       id: uniqid()
     },
@@ -135,23 +135,25 @@ const [modoEdit, setModoEdit] = useState(false)
 
   return (
     <div 
-    className="d-flex flex-column h-100 
-    justify-content-center"
-    style={{backgroundColor:color}} 
+      id='quote-box'
+      className="d-flex flex-column h-100 
+      justify-content-center"
+      style={{backgroundColor:color}} 
     >
 
       <div className=" bg-dark mx-auto rounded border-white" style={{width:"80%"}}>
         <section className="text-white rounded my-3 mx-3">
         {/*Estados usados para mostrar la frase y autor*/}
-          <p className="text-center font-italic font-weight-bold">{frase}</p>
-          <p className="text-right">{autor}</p>
+          <p id="text" className="text-center font-italic font-weight-bold">{frase}</p>
+          <p id="author" className="text-right">{autor}</p>
         </section>
       </div>
 
       <div className="bg-dark mx-auto d-flex rounded" style={{width:"80%"}}>
+      <a href={`https://twitter.com/intent/tweet/?hashtags=quotes&text="${frase}" ${autor}`} id="tweet-quote" target="_blank" style={{backgroundColor:"#00dccd"}} className="btn btn-success justify-self-start ml-3">Twittear</a>
         <button className="btn btn-success ml-auto" onClick={handleEdit}>Editar frase</button>
         <button className="btn btn-secondary mx-3" onClick={handleAdd}>Añadir frase</button>
-        <button className="btn btn-primary mr-3" onClick={handleNext}>Siguiente</button>
+        <button id="new-quote" className="btn btn-primary mr-3" onClick={handleNext}>Siguiente</button>
       </div>
       
       {/*Operación ternaria que habilita y deshabilita el formulario para agregar frases.*/}
